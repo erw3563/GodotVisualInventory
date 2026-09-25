@@ -1,6 +1,6 @@
-[gd_resource type="StyleBoxTexture" format=3 uid="uid://bqgridcellstyle01"]
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://c02nomoyygapg"]
 
-[ext_resource type="Texture2D" uid="uid://brcyn8wckj2ps" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/textures/inventory_frame.png" id="1_texture"]
+[ext_resource type="Texture2D" uid="uid://brcyn8wckj2ps" path="res://addons/visual_res_editor_panel/inventory_frame.png" id="1_texture"]
 
 [resource]
 texture = ExtResource("1_texture")

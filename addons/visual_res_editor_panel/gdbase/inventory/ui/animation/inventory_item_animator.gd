@@ -18,8 +18,6 @@ signal gain_animation_finished(item: ItemInstanceData)
 const GHOST_Z_INDEX := 100
 ## 尾段渐隐占整段飞行的比例。
 const FADE_TAIL_RATIO := 0.35
-## 登场完成轮询的帧数上限（防组件异常时挂死）。
-const ENTRANCE_WAIT_FRAME_LIMIT := 120
 ## 获得动画目标格图标延迟的额外容差（登场前后各两帧布局稳定 + 落点解析两帧）。
 const GAIN_ICON_REVEAL_MARGIN := 0.1
 
@@ -34,9 +32,9 @@ const GAIN_ICON_REVEAL_MARGIN := 0.1
 @export_range(1.0, 2.0, 0.01) var flight_peak_scale: float = 1.15
 ## 为 true 时飞行尾段渐隐，使幽灵融入落点处的真实物品格。
 @export var fade_during_flight: bool = true
-## 获得动画登场时长（秒），同时驱动 QuickZoom 展开与 QuickWobble 晃动。
+## 获得动画登场时长（秒）：缩放展开与晃动归正同播。
 @export_range(0.05, 2.0, 0.01) var entrance_duration: float = 0.25
-## 获得动画登场缓动曲线（默认带回弹，照 QuickZoom/QuickWobble 组件默认）。
+## 获得动画登场缓动曲线（默认带回弹）。
 @export var entrance_transition: Tween.TransitionType = Tween.TRANS_BACK
 ## 获得动画登场缓动方向。
 @export var entrance_ease: Tween.EaseType = Tween.EASE_OUT
@@ -200,7 +198,7 @@ func play_flight(
 
 
 ## 驱动幽灵从 source_center 直线飞向 target_center：缓动插值、缩放脉冲、尾段渐隐；
-## 结束释放幽灵并发出指定结束信号。位置为唯一落笔属性，与 QuickZoom/QuickWobble 等演出组件不冲突。
+## 结束释放幽灵并发出指定结束信号。飞行只写位置与 modulate，与登场缩放/旋转同帧可并存。
 func _fly_ghost(ghost: InventoryItemBox, item_instance: ItemInstanceData, source_center: Vector2, target_center: Vector2, finished_signal: Signal, cleanup: Callable = Callable()) -> void:
 	var tween := ghost.create_tween()
 	tween.set_trans(animation_transition)
@@ -280,51 +278,34 @@ func play_gain(item_instance: ItemInstanceData, display_num: int, target_invento
 	_fly_ghost(ghost, item_instance, screen_center, target_rect.get_center(), gain_animation_finished)
 
 
-## 幽灵居中登场：幽灵 authored 起点＝隐藏＋缩 0（防闪现）；入场宿主树序为首步
-## 即时显形，随后同播组（缩放到满幅与晃动归正同帧齐播），以宿主完成信号等待两段
-## 结束（帧数上限兜底防外部中止路径死等）。
+## 幽灵居中登场：起点隐藏且缩为 0；布局稳定后显形，缩放与旋转同播归正。
 func _play_center_entrance(ghost: InventoryItemBox) -> void:
 	ghost.scale = Vector2.ZERO
+	ghost.rotation_degrees = entrance_start_rotation_degrees
 	ghost.visible = false
-	var host := QuickUiAnimHost.new()
-	host.name = "GainEnterHost"
-	host.animate_entrance = false
-	var reveal := QuickShow.new()
-	reveal.control = ghost
-	reveal.animation_duration = 0.0
-	host.add_child(reveal)
-	var group := QuickParallel.new()
-	host.add_child(group)
-	var zoom := QuickZoom.new()
-	zoom.ui = ghost
-	zoom.origin_ratio = Vector2(0.5, 0.5)
-	zoom.animation_duration = entrance_duration
-	zoom.animation_transition = entrance_transition
-	zoom.animation_ease = entrance_ease
-	group.add_child(zoom)
-	var rotate := QuickWobble.new()
-	rotate.ui = ghost
-	var entrance_angles: Array[float] = [entrance_start_rotation_degrees]
-	rotate.wobble_sequence = entrance_angles
-	rotate.animation_duration = entrance_duration
-	rotate.animation_transition = entrance_transition
-	rotate.animation_ease = entrance_ease
-	group.add_child(rotate)
-	ghost.add_child(host)
-	await QuickUI.layout_settled(ghost)
+	await _await_layout_settled(ghost)
 	if !is_instance_valid(ghost):
 		return
-	var done := {"finished": false}
-	host.finished.connect(func(_interrupted: bool): done["finished"] = true)
-	host.play()
-	var waited_frames := 0
-	while waited_frames < ENTRANCE_WAIT_FRAME_LIMIT:
-		if !is_instance_valid(host):
-			return
-		if done["finished"]:
-			return
-		await get_tree().process_frame
-		waited_frames += 1
+	ghost.pivot_offset = ghost.size * 0.5
+	ghost.visible = true
+	var tween := ghost.create_tween()
+	tween.set_parallel(true)
+	tween.set_trans(entrance_transition)
+	tween.set_ease(entrance_ease)
+	tween.tween_property(ghost, "scale", Vector2.ONE, entrance_duration)
+	tween.tween_property(ghost, "rotation_degrees", 0.0, entrance_duration)
+	await tween.finished
+
+
+## 等两帧让容器与锚点布局稳定。
+func _await_layout_settled(node: Node) -> void:
+	if node == null or not node.is_inside_tree():
+		return
+	var tree := node.get_tree()
+	await tree.process_frame
+	if not is_instance_valid(node) or not node.is_inside_tree():
+		return
+	await tree.process_frame
 
 
 ## 视口可见矩形中心（本服务层 canvas 口径；层 transform 恒等时即屏幕中心）。

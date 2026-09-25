@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk275dqevv1my"
-path="res://.godot/imported/grenade.png-601e24a8be09a3e4c4975d4e0f8283f4.ctex"
+uid="uid://brcyn8wckj2ps"
+path="res://.godot/imported/inventory_frame.png-e248353e41555e26f596d8ee60ea361c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/visual_res_editor_panel/assets/white_block_assets/grenade.png"
-dest_files=["res://.godot/imported/grenade.png-601e24a8be09a3e4c4975d4e0f8283f4.ctex"]
+source_file="res://addons/visual_res_editor_panel/inventory_frame.png"
+dest_files=["res://.godot/imported/inventory_frame.png-e248353e41555e26f596d8ee60ea361c.ctex"]
 
 [params]
 

@@ -77,6 +77,25 @@ func clear_all_description():
 			box.queue_free()
 	boxes.clear()
 
+## 浮窗入场：定位到鼠标旁并展开可见（由浮窗场景接线 description_updated）。
+func play_popup_enter() -> void:
+	var panel := visibility_control
+	if panel == null:
+		return
+	var mouse_position := get_viewport().get_mouse_position()
+	panel.global_position = mouse_position + Vector2(1.0, -1.0)
+	panel.pivot_offset = Vector2.ZERO
+	panel.scale = Vector2.ONE
+	panel.visible = true
+
+## 浮窗离场：缩到零并隐藏（由浮窗场景接线 to_show_new）。
+func play_popup_exit() -> void:
+	var panel := visibility_control
+	if panel == null:
+		return
+	panel.scale = Vector2.ZERO
+	panel.visible = false
+
 ## 根据 show_mode 规则判断指定类型是否显示。
 func _check_section_type_to_show(section_type: String) -> bool:
 	var is_visible := true

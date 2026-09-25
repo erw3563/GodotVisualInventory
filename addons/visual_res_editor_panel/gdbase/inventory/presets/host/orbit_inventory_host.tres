@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InventoryHostDefinition" format=3 uid="uid://cxpmjqtgq38ca"]
 
-[ext_resource type="Texture2D" uid="uid://brcyn8wckj2ps" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/textures/inventory_frame.png" id="10_ueu3r"]
+[ext_resource type="Texture2D" uid="uid://brcyn8wckj2ps" path="res://addons/visual_res_editor_panel/inventory_frame.png" id="10_ueu3r"]
 [ext_resource type="Script" uid="uid://bmho064dk8nqe" path="res://addons/visual_res_editor_panel/gdbase/inventory/ui/inventory_host/assembly/orbit_inventory_panel_assembly_definition.gd" id="11_1srqy"]
 [ext_resource type="Resource" uid="uid://bmgxjde1mpfkr" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/animation/presets/animation.tres" id="animation_feature"]
 [ext_resource type="Resource" uid="uid://nwwisckxiwrp" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/features/description.tres" id="describe"]

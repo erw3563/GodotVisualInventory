@@ -16,10 +16,9 @@
 
 1. 使用 **Godot 4.8** 打开你的项目。本仓库的 `project.godot` 声明了 4.8；其他 Godot 版本尚未在本仓库中证明兼容。
 2. 将仓库的 `addons/visual_res_editor_panel/` **完整复制**到目标项目的 `res://addons/visual_res_editor_panel/`。保留目录结构和其中的资源、场景、图片与脚本。
-3. 在 **项目 > 项目设置 > 插件** 中启用 `VisualResEditorPanel`。
-4. 如需使用预置鼠标和键盘操作，把下表中的动作添加到 **项目设置 > 输入映射**。本仓库的演示项目已配置这些动作；单独复制插件目录不会复制 `project.godot` 的输入映射。
+3. 在 **项目 > 项目设置 > 插件** 中启用 `VisualResEditorPanel`。启用时会自动调用 `InventoryInputMapSetup.ensure_bindings()`，把下表动作写入 **项目设置 > 输入映射**（已有绑定不会被覆盖）。也可在 **工具 > 注册库存输入映射** 手动再跑一次；运行时脚本可调用同一 API。
 
-| 输入动作 | 演示项目的默认输入 |
+| 输入动作 | 默认输入 |
 | --- | --- |
 | `inventory_primary` | 鼠标左键 |
 | `inventory_primary_single` | Ctrl + 鼠标左键 |
@@ -79,6 +78,6 @@ addons/visual_res_editor_panel/
     └── inventory/presets/    # 可复制或修改的预设资源
 ```
 
-## 发布状态
+## 许可证
 
-本仓库目前没有覆盖整个插件与演示素材的根目录许可证。`gdbase/ui/quick_node/texture_mask/LICENSE` 只覆盖该子目录对应的第三方内容；发布或复用前请确认其余代码与素材的授权，并补充项目许可证及必要的素材署名。
+本项目以 [MIT License](LICENSE) 发布。单独分发 `addons/visual_res_editor_panel/` 时，该目录也附有一份 [许可证](addons/visual_res_editor_panel/LICENSE)。
