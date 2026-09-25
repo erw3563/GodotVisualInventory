@@ -1,4 +1,5 @@
 # Visual Inventory
+README由AI生成
 
 面向 Godot 4.8 的可视化库存插件。它同时提供可在编辑器中配置的物品、库存与界面资源，以及运行时的物品放置、拾取、旋转、堆叠和转移能力。
 
@@ -6,7 +7,8 @@
 
 ## 功能概览
 
-- **可视化编辑**：在 Inspector 中编辑 `ItemData`、`InventoryData`、`InventoryHostDefinition`，并编辑 `Shape` 和 `OccupyMap` 的格子。
+- **最高集成节点**：高度集成，在InventoryHost一个节点全可完成从零创建一个背包的所有工作。
+- **可视化编辑**：在 Inspector 中提供编辑 `ItemData`、`InventoryData`、`InventoryHostDefinition`的可视化面板，并编辑 `Shape` 和 `OccupyMap` 的格子面板。
 - **多种布局**：提供网格、目录和环绕布局的 Host 预设。界面布局与可用功能分开配置。
 - **物品数据**：物品模板可设置名称、图标、描述、最大堆叠数和可组合的 Part；物品实例保存数量、方向及实例状态。
 - **库存操作**：支持放置、移动、拾取、旋转、合并、拆分数量与库存间转移。操作经过规划、规则裁决和提交，结果包含成功状态及失败原因。
@@ -77,6 +79,10 @@ addons/visual_res_editor_panel/
     ├── inventory/ui/         # Host、布局、输入与呈现
     └── inventory/presets/    # 可复制或修改的预设资源
 ```
+## erw的话
+
+以前专门为库存系统写非常多可视化的编辑面板根本是不可能的事情，它吃力又不讨好。对于我来说，宁愿多敲代码用节点去拼一个背包也不愿意去为这些资源写专门的编辑面板。但AI的出现改变了这一切，为了减轻人类交互的负担，利用AI强大的能力写可视化的资源编辑面板成为了一个可选项。对我而言，它能够减轻许多重复化的配置工作。我能利用它做出非常多样的库存，并且不需要向AI许愿。因为这将许愿的流程转移到了前期。
+那为什么不让AI去配置背包人物还有别的东西？我不清楚这个问题的回答，但我觉得这样很Coollllllllllllllllllllllllllllllllllllllllllllllllllllll！！！！！！！！！！！！
 
 ## 许可证
 
