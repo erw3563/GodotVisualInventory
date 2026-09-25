@@ -1,0 +1,5 @@
+# Godot 4 generates and rebuilds this project cache locally.
+/.godot/
+
+# Local export settings; keep export_presets.cfg versioned when added.
+/export.cfg
