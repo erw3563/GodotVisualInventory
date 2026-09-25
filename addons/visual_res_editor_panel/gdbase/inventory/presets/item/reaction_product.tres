@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dvio1lwbggo08"]
+
+[ext_resource type="Texture2D" uid="uid://1kbsckhgki65" path="res://addons/visual_res_editor_panel/assets/white_block_assets/metal.png" id="1_383n0"]
+[ext_resource type="Script" uid="uid://c6utnxv0gqgc0" path="res://addons/visual_res_editor_panel/gdbase/cell_geometry/shape/shape.gd" id="4_xfpm7"]
+[ext_resource type="Script" uid="uid://d0gm2rc3f5wbt" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/shape/item_shape_part.gd" id="e0"]
+[ext_resource type="Script" uid="uid://x0db3hih18ax" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_data.gd" id="e1"]
+[ext_resource type="Script" uid="uid://b2ej3ilygm5rk" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_part_base.gd" id="e3"]
+
+[sub_resource type="Resource" id="Resource_krgjm"]
+script = ExtResource("4_xfpm7")
+
+[sub_resource type="Resource" id="s0"]
+script = ExtResource("e0")
+shape = SubResource("Resource_krgjm")
+
+[resource]
+script = ExtResource("e1")
+item_name = "铁"
+icon = ExtResource("1_383n0")
+max_num = 10
+parts = Array[ExtResource("e3")]([SubResource("s0")])

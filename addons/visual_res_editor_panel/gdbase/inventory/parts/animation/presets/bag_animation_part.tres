@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="ItemAnimationPart" format=3 uid="uid://c4tev6rh38dkl"]
+
+[ext_resource type="Script" uid="uid://cst37qm8egxlx" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/animation/item_animation_definition.gd" id="animation"]
+[ext_resource type="Script" uid="uid://beqwws7v0ay1v" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/animation/item_appearance_definition.gd" id="appearance"]
+[ext_resource type="Texture2D" uid="uid://bwegikc1twfey" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/animation/presets/textures/bag_closed.svg" id="closed"]
+[ext_resource type="Script" uid="uid://c41u630u6c0x4" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/animation/item_frame_animation.gd" id="frames"]
+[ext_resource type="Texture2D" uid="uid://bnfspbw1g1gaj" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/animation/presets/textures/bag_half_open.svg" id="half"]
+[ext_resource type="Texture2D" uid="uid://c8ym2vtkvmb0a" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/textures/chest.png" id="opened"]
+[ext_resource type="Script" uid="uid://dqxmk8382n1uk" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/animation/item_animation_part.gd" id="part"]
+
+[sub_resource type="Resource" id="opening"]
+script = ExtResource("frames")
+frames = Array[Texture2D]([ExtResource("closed"), ExtResource("half"), ExtResource("opened")])
+frame_duration = 0.07
+
+[sub_resource type="Resource" id="open"]
+script = ExtResource("animation")
+key = &"open"
+content = SubResource("opening")
+target_appearance_key = &"opened"
+
+[sub_resource type="Resource" id="closing"]
+script = ExtResource("frames")
+frames = Array[Texture2D]([ExtResource("opened"), ExtResource("half"), ExtResource("closed")])
+frame_duration = 0.07
+
+[sub_resource type="Resource" id="close"]
+script = ExtResource("animation")
+key = &"close"
+content = SubResource("closing")
+target_appearance_key = &"closed"
+
+[sub_resource type="Resource" id="closed"]
+script = ExtResource("appearance")
+key = &"closed"
+texture = ExtResource("closed")
+
+[sub_resource type="Resource" id="opened"]
+script = ExtResource("appearance")
+key = &"opened"
+texture = ExtResource("opened")
+
+[resource]
+script = ExtResource("part")
+appearances = Array[ExtResource("appearance")]([SubResource("closed"), SubResource("opened")])
+animations = Array[ExtResource("animation")]([SubResource("open"), SubResource("close")])

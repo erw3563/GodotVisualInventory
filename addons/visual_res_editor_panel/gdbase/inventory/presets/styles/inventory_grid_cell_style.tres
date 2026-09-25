@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://bqgridcellstyle01"]
+
+[ext_resource type="Texture2D" uid="uid://brcyn8wckj2ps" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/textures/inventory_frame.png" id="1_texture"]
+
+[resource]
+texture = ExtResource("1_texture")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(6, 6, 20, 20)

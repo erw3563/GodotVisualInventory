@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://d3sb1f1awimat"]
 
 [ext_resource type="Script" uid="uid://cxx7r62iifvu4" path="res://addons/visual_res_editor_panel/inventory_data/inventory_data_editor_panel.gd" id="1_panel"]
-[ext_resource type="Script" uid="uid://o0w70tug0ugw" path="res://addons/visual_res_editor_panel/inventory_data/inventory_panel/grid_inventory_panel/inventory_grid_panel.gd" id="2_grid"]
-[ext_resource type="Script" uid="uid://p51chh0accl7" path="res://addons/visual_res_editor_panel/inventory_data/inventory_panel/grid_inventory_panel/grid_inventory_items_panel.gd" id="3_items"]
-[ext_resource type="Script" uid="uid://bxegw3pnll3pg" path="res://addons/visual_res_editor_panel/inventory_data/inventory_panel/shape_overlay/inventory_shape_overlay.gd" id="4_overlay"]
-[ext_resource type="Script" uid="uid://chlveqs7anexb" path="res://addons/visual_res_editor_panel/inventory_data/inventory_extra_node/input_controller/inventory_items_input_controller.gd" id="5_input"]
+
+[ext_resource type="Script" path="res://addons/visual_res_editor_panel/gdbase/inventory/ui/inventory_host/inventory_host.gd" id="2_host"]
+[ext_resource type="Resource" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/host/grid_inventory_host_readonly.tres" id="3_definition"]
 
 [node name="Panel" type="PanelContainer" unique_id=891144298]
 custom_minimum_size = Vector2(0, 480)
@@ -14,11 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_panel")
-
-[node name="InventoryItemsInputController" type="Node" parent="." unique_id=1209483721 node_paths=PackedStringArray("inventory_grid_panel", "held_item_view_parent")]
-script = ExtResource("5_input")
-inventory_grid_panel = NodePath("../MarginContainer/VBox/ScrollContainer/InventoryViewRoot/InventoryGridPanel")
-held_item_view_parent = NodePath("..")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1103648157]
 layout_mode = 2
@@ -70,28 +64,10 @@ size_flags_vertical = 3
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 2
 
-[node name="InventoryViewRoot" type="PanelContainer" parent="MarginContainer/VBox/ScrollContainer" unique_id=479287653]
+[node name="InventoryViewRoot" type="Control" parent="MarginContainer/VBox/ScrollContainer"]
 layout_mode = 2
-
-[node name="InventoryGridPanel" type="GridContainer" parent="MarginContainer/VBox/ScrollContainer/InventoryViewRoot" unique_id=613308404]
-layout_mode = 2
-mouse_filter = 0
-script = ExtResource("2_grid")
-cell_size = Vector2(48, 48)
-
-[node name="InventoryItemsPanel" type="Control" parent="MarginContainer/VBox/ScrollContainer/InventoryViewRoot" unique_id=1578051819 node_paths=PackedStringArray("inventory_grid_panel")]
-layout_mode = 2
-mouse_filter = 2
-script = ExtResource("3_items")
-inventory_grid_panel = NodePath("../InventoryGridPanel")
-
-[node name="InventoryShapeOverlay" type="Control" parent="MarginContainer/VBox/ScrollContainer/InventoryViewRoot" unique_id=863937951 node_paths=PackedStringArray("inventory_grid_panel")]
-z_index = 80
-layout_mode = 2
-mouse_filter = 2
-script = ExtResource("4_overlay")
-inventory_grid_panel = NodePath("../InventoryGridPanel")
-border_width = 2.0
+script = ExtResource("2_host")
+definition = ExtResource("3_definition")
 
 [connection signal="pressed" from="MarginContainer/VBox/PopButton" to="." method="_on_pop_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBox/ViewControls/AddButton" to="." method="_on_add_button_pressed"]

@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Shape" format=3 uid="uid://d2fnhy5nh1ff6"]
-
-[ext_resource type="Script" uid="uid://c6utnxv0gqgc0" path="res://addons/custom_shape_panel/shape.gd" id="1_lcbtc"]
-
-[resource]
-script = ExtResource("1_lcbtc")
-cells = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, -1)])
-metadata/_custom_type_script = "uid://c6utnxv0gqgc0"

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GridInventoryPanelAssemblyDefinition" format=3 uid="uid://76ae6krjg0p5"]
+
+[ext_resource type="Script" uid="uid://dq7jjio2oleco" path="res://addons/visual_res_editor_panel/gdbase/inventory/ui/inventory_host/assembly/grid_inventory_panel_assembly_definition.gd" id="1"]
+[ext_resource type="StyleBox" uid="uid://bqgridcellstyle01" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/styles/inventory_grid_cell_style.tres" id="2_style"]
+
+[resource]
+script = ExtResource("1")
+cell_style = ExtResource("2_style")

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://l8s5yiexwbxk"]
+
+[ext_resource type="Script" uid="uid://bvt81cfvmhu1t" path="res://addons/visual_res_editor_panel/gdbase/inventory/ui/description/custom/custom_item_description_panel.gd" id="1_j126l"]
+[ext_resource type="Script" uid="uid://cowa42jh5mafo" path="res://addons/visual_res_editor_panel/gdbase/ui/quick_node/quick_ui_anim_host.gd" id="2_host"]
+[ext_resource type="Script" uid="uid://bw00dnrh07iwt" path="res://addons/visual_res_editor_panel/gdbase/ui/quick_node/quick_mouse_place.gd" id="3_vn3kh"]
+[ext_resource type="Script" uid="uid://b1g5y8nnfmlvb" path="res://addons/visual_res_editor_panel/gdbase/ui/quick_node/quick_zoom.gd" id="4_xmv8g"]
+[ext_resource type="Script" uid="uid://l5j44igh7cty" path="res://addons/visual_res_editor_panel/gdbase/ui/quick_node/quick_show.gd" id="5_show"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pi78v"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.13, 0.15, 0.18, 0.94)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="ItemDescription" type="Control" unique_id=279314608 node_paths=PackedStringArray("box_container", "visibility_control")]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_j126l")
+box_container = NodePath("DescriptionLayer/PanelContainer/ScrollContainer/VBoxContainer")
+max_box_height = 400.0
+visibility_control = NodePath("DescriptionLayer/PanelContainer")
+
+[node name="EnterHost" type="Node" parent="." unique_id=886994811]
+script = ExtResource("2_host")
+animate_entrance = false
+
+[node name="QuickMousePlace" type="Node" parent="EnterHost" node_paths=PackedStringArray("control")]
+script = ExtResource("3_vn3kh")
+control = NodePath("../../DescriptionLayer/PanelContainer")
+is_point_in_mouse_pos = false
+offset = Vector2(1, -1)
+
+[node name="QuickShow" type="Node" parent="EnterHost" node_paths=PackedStringArray("control")]
+script = ExtResource("5_show")
+control = NodePath("../../DescriptionLayer/PanelContainer")
+animation_duration = 0.0
+
+[node name="QuickZoom" type="Node" parent="EnterHost" node_paths=PackedStringArray("ui")]
+script = ExtResource("4_xmv8g")
+ui = NodePath("../../DescriptionLayer/PanelContainer")
+origin_ratio = Vector2(0, 0)
+metadata/_custom_type_script = "uid://b1g5y8nnfmlvb"
+
+[node name="ExitHost" type="Node" parent="."]
+script = ExtResource("2_host")
+animate_entrance = false
+
+[node name="QuickZoom" type="Node" parent="ExitHost" node_paths=PackedStringArray("ui")]
+script = ExtResource("4_xmv8g")
+ui = NodePath("../../DescriptionLayer/PanelContainer")
+origin_ratio = Vector2(0, 0)
+target_scale = Vector2(0, 0)
+
+[node name="QuickShow" type="Node" parent="ExitHost" node_paths=PackedStringArray("control")]
+script = ExtResource("5_show")
+control = NodePath("../../DescriptionLayer/PanelContainer")
+target_state = 1
+animation_duration = 0.0
+
+[node name="DescriptionLayer" type="CanvasLayer" parent="." unique_id=640317216]
+layer = 100
+
+[node name="PanelContainer" type="PanelContainer" parent="DescriptionLayer" unique_id=151716031]
+visible = false
+z_index = 99
+theme_override_styles/panel = SubResource("StyleBoxFlat_pi78v")
+scale = Vector2(0, 0)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DescriptionLayer/PanelContainer" unique_id=222035551]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DescriptionLayer/PanelContainer/ScrollContainer" unique_id=1904255802]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="description_updated" from="." to="EnterHost" method="play"]
+[connection signal="to_show_new" from="." to="ExitHost" method="play"]

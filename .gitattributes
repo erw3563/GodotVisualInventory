@@ -1,0 +1,7 @@
+# Normalize EOL for text files.
+* text=auto eol=lf
+
+# Asset Library Addon package: only ship addons/.
+/** export-ignore
+/addons !export-ignore
+/addons/** !export-ignore

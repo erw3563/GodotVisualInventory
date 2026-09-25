@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://7xucoj62qn7e"]
+
+[ext_resource type="Texture2D" uid="uid://dpk7e45ju0ak8" path="res://addons/visual_res_editor_panel/assets/white_block_assets/example.png" id="1_w44ar"]
+[ext_resource type="Script" uid="uid://b2ej3ilygm5rk" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_part_base.gd" id="2_moybr"]
+[ext_resource type="Script" uid="uid://x0db3hih18ax" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_data.gd" id="5_82m6h"]
+[ext_resource type="Script" uid="uid://bv0otsortd6gd" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/numeric/item_numeric_part.gd" id="5_moybr"]
+[ext_resource type="Script" uid="uid://c6utnxv0gqgc0" path="res://addons/visual_res_editor_panel/gdbase/cell_geometry/shape/shape.gd" id="5_syrmk"]
+[ext_resource type="Script" uid="uid://d0gm2rc3f5wbt" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/shape/item_shape_part.gd" id="item_shape_part_1"]
+[ext_resource type="Script" uid="uid://403v861sc8sy" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/numeric/item_numeric_entry.gd" id="Script_numeric_entry"]
+
+[sub_resource type="Resource" id="Resource_price_entry"]
+script = ExtResource("Script_numeric_entry")
+key = &"coin"
+display_name = "coin"
+value = 10.0
+
+[sub_resource type="Resource" id="Resource_hrjj3"]
+script = ExtResource("5_moybr")
+entries = Array[ExtResource("Script_numeric_entry")]([SubResource("Resource_price_entry")])
+metadata/_custom_type_script = "uid://bv0otsortd6gd"
+
+[sub_resource type="Resource" id="Resource_4g1tx"]
+script = ExtResource("5_syrmk")
+
+[sub_resource type="Resource" id="Resource_item_shape_part"]
+script = ExtResource("item_shape_part_1")
+shape = SubResource("Resource_4g1tx")
+stack_merge_mode = 1
+metadata/_custom_type_script = "uid://bq8shapeitempart"
+
+[resource]
+script = ExtResource("5_82m6h")
+item_name = "堆叠东西"
+icon = ExtResource("1_w44ar")
+max_num = 3
+item_description = "这是一个试例资源，最大堆叠数为3。"
+parts = Array[ExtResource("2_moybr")]([SubResource("Resource_hrjj3"), SubResource("Resource_item_shape_part")])
+metadata/_custom_type_script = "uid://x0db3hih18ax"

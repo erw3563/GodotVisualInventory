@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryHostDefinition" format=3]
+
+[ext_resource type="Script" path="res://addons/visual_res_editor_panel/gdbase/inventory/ui/inventory_host/assembly/inventory_host_definition.gd" id="host"]
+[ext_resource type="Script" path="res://addons/visual_res_editor_panel/gdbase/inventory/ui/inventory_host/assembly/inventory_host_feature_definition.gd" id="feature"]
+[ext_resource type="Resource" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/panel_assembly/grid_inventory_panel_assembly.tres" id="layout"]
+[ext_resource type="Resource" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/cell_appearance/presets/cell_appearance.tres" id="cell_appearance"]
+
+
+
+[resource]
+script = ExtResource("host")
+layout = ExtResource("layout")
+features = Array[ExtResource("feature")]([ExtResource("cell_appearance")])

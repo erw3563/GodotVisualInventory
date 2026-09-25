@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InventoryOperationRulesFeatureDefinition" format=3]
+
+[ext_resource type="Script" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/tag/host/inventory_operation_rules_feature_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+respect_no_take_tag = true
+respect_no_place_tag = true
+respect_no_consume_tag = true

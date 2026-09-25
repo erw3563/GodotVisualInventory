@@ -14,13 +14,30 @@ var panel: Control
 var popup_window: Window
 var popup_panel: Control
 var popup_helper: VisualResEditorPopup
+var _is_commit_queued: bool = false
 
 
 func _init() -> void:
+	set_process(false)
 	panel = PANEL_SCENE.instantiate() as Control
 	add_child(panel)
 	set_bottom_editor(panel)
 	set_label("")
+
+
+## 手持是尚未结束的编辑操作；Inspector 重建会让旧面板恢复来源物品。
+## 因此在放下、删除或恢复之后才提交，不能保存暂时缺少手持物品的库存。
+func _process(_delta: float) -> void:
+	if _is_commit_queued and not _has_pending_held_item():
+		_commit_inventory_changes()
+
+
+func _has_pending_held_item() -> bool:
+	var services := InventorySceneServices.find_existing(panel)
+	if services == null:
+		return false
+	var session := services.get_held_item_session()
+	return is_instance_valid(session) and session.is_holding_from(inventory_data_resource)
 
 
 func _notification(what: int) -> void:
@@ -43,12 +60,14 @@ func _update_property() -> void:
 	_sync_panel_state()
 
 
-## 接收面板提交的背包修改。
+## 接收面板提交的背包修改；同一帧内多次改动合并为一次保存。
 func _on_panel_inventory_changed() -> void:
 	if inventory_data_resource == null:
 		return
-	_commit_inventory_changes()
-	_sync_panel_state()
+	if _is_commit_queued:
+		return
+	_is_commit_queued = true
+	_commit_inventory_changes.call_deferred()
 
 
 ## 在弹窗中打开一份新的可视化面板实例。
@@ -98,18 +117,42 @@ func _apply_panel_state(target_panel: Control) -> void:
 		target_panel.call("set_inventory_data_resource", inventory_data_resource)
 
 
+## 把当前背包改动立即写回资源，再通知检查器。
 func _commit_inventory_changes() -> void:
+	if not _is_commit_queued:
+		return
+	if inventory_data_resource == null:
+		_is_commit_queued = false
+		set_process(false)
+		return
+	if _has_pending_held_item():
+		set_process(true)
+		return
+	_is_commit_queued = false
+	set_process(false)
+	_persist_inventory_resource()
+	# occupancy 为权威；提交前对齐派生缓存，再通知检查器。
+	inventory_data_resource.ensure_occupancy_synced()
+	emit_changed("occupy_map", inventory_data_resource.occupy_map)
+	var committed_items: Array[ItemInstanceData] = []
+	for item_instance in inventory_data_resource.get_item_instances():
+		committed_items.append(item_instance)
+	emit_changed("item_instances", committed_items)
+	inventory_data_resource.emit_changed()
+	_sync_panel_state()
+
+
+## 立即保存独立 .tres；内嵌子资源则把当前场景标为未保存。
+func _persist_inventory_resource() -> void:
 	if inventory_data_resource == null:
 		return
-	var duplicated_items: Array[ItemInstanceData] = []
-	for item_instance in inventory_data_resource.item_instances:
-		duplicated_items.append(item_instance)
-	var edited_property := get_edited_property()
-	if edited_property != StringName():
-		emit_changed("item_instances", duplicated_items)
-		emit_changed("occupy_map", inventory_data_resource.occupy_map)
-	else:
-		inventory_data_resource.emit_changed()
+	var resource_path := inventory_data_resource.resource_path
+	if resource_path.is_empty() or resource_path.contains("::"):
+		EditorInterface.mark_scene_as_unsaved()
+		return
+	var save_error := ResourceSaver.save(inventory_data_resource, resource_path)
+	if save_error != OK:
+		push_error("保存背包资源失败: %s，错误 %s" % [resource_path, error_string(save_error)])
 
 
 func _close_popup() -> void:

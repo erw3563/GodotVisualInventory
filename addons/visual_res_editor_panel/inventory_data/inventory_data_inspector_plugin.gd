@@ -6,7 +6,7 @@ const InventoryDataPropertyEditor := preload(
 )
 
 
-## 处理 InventoryData 及其子类（如 ShopInventoryData）。
+## 处理 InventoryData 资源类型。
 func _can_handle(object: Object) -> bool:
 	return object is InventoryData
 

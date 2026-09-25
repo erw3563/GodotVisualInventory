@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="InventoryHostDefinition" format=3 uid="uid://bwfpi306rm5i1"]
+
+[ext_resource type="Script" uid="uid://bp46qjiwcu25p" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/cell_appearance/inventory_cell_appearance_entry.gd" id="3_a3htg"]
+[ext_resource type="Script" uid="uid://cjo1kw6n3ebho" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/cell_appearance/inventory_item_line_visual_style.gd" id="6_sjul8"]
+[ext_resource type="Script" uid="uid://d18uu3phsudvq" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/cell_appearance/item_cell_appearance_part.gd" id="7_5pbs0"]
+[ext_resource type="Script" uid="uid://cxhr3udbtjpk3" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/cell_appearance/host/inventory_cell_appearance_feature_definition.gd" id="8_b6omv"]
+[ext_resource type="Script" uid="uid://dkm10qaaxqr7v" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/nested_inventory/host/nested_inventory_cycle_prevention_feature_definition.gd" id="14_rvbjx"]
+[ext_resource type="Texture2D" uid="uid://degd7225dfjew" path="res://addons/visual_res_editor_panel/assets/UIBorder/Border/panel-border-001.png" id="15_a3htg"]
+[ext_resource type="Shader" uid="uid://djwl7kb6v5fow" path="res://addons/visual_res_editor_panel/shaders/canvas_item.gdshader" id="15_sjul8"]
+[ext_resource type="Texture2D" uid="uid://dx7jdote2rhgk" path="res://addons/visual_res_editor_panel/assets/line.png" id="16_5pbs0"]
+[ext_resource type="Texture2D" uid="uid://b0siijahmpk0a" path="res://addons/visual_res_editor_panel/assets/UIBorder/Panel/panel-001.png" id="16_dpg00"]
+[ext_resource type="Script" uid="uid://dq7jjio2oleco" path="res://addons/visual_res_editor_panel/gdbase/inventory/ui/inventory_host/assembly/grid_inventory_panel_assembly_definition.gd" id="16_ueta7"]
+[ext_resource type="Resource" uid="uid://bmgxjde1mpfkr" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/animation/presets/animation.tres" id="animation_feature"]
+[ext_resource type="Resource" uid="uid://nwwisckxiwrp" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/features/description.tres" id="describe"]
+[ext_resource type="Script" uid="uid://c5g3ltygatqh8" path="res://addons/visual_res_editor_panel/gdbase/inventory/ui/inventory_host/assembly/inventory_host_feature_definition.gd" id="feature"]
+[ext_resource type="Script" uid="uid://brwqradtk4qso" path="res://addons/visual_res_editor_panel/gdbase/inventory/ui/inventory_host/assembly/inventory_host_definition.gd" id="host"]
+[ext_resource type="Resource" uid="uid://shvdsc22inxe" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/nested_inventory/presets/nested_inventory.tres" id="nested"]
+[ext_resource type="Resource" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/tag/presets/operation_rules.tres" id="operation_policy"]
+[ext_resource type="Resource" uid="uid://drlnqxdankvs3" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/features/take.tres" id="pick"]
+[ext_resource type="Resource" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/features/place.tres" id="place_feature"]
+[ext_resource type="Resource" uid="uid://b4fmnnafe213s" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/features/rotate.tres" id="rotate"]
+[ext_resource type="Resource" uid="uid://wcf4ycaxl8x6" path="res://addons/visual_res_editor_panel/gdbase/inventory/presets/features/quick_transfer.tres" id="transfer"]
+
+[sub_resource type="Resource" id="Resource_rvbjx"]
+script = ExtResource("6_sjul8")
+border_color = Color(0.84, 0.88, 0.97, 1)
+fill_color = Color(0.64, 0.72, 0.9, 0.12)
+
+[sub_resource type="Resource" id="Resource_a3htg"]
+script = ExtResource("3_a3htg")
+id = &"placed"
+style = SubResource("Resource_rvbjx")
+
+[sub_resource type="Resource" id="Resource_dpg00"]
+script = ExtResource("6_sjul8")
+border_color = Color(0.37, 0.9, 0.53, 1)
+fill_color = Color(0.37, 0.9, 0.53, 0.2)
+
+[sub_resource type="Resource" id="Resource_6lspb"]
+script = ExtResource("3_a3htg")
+id = &"placeable"
+style = SubResource("Resource_dpg00")
+
+[sub_resource type="Resource" id="Resource_sjul8"]
+script = ExtResource("6_sjul8")
+border_color = Color(1, 0.34, 0.34, 1)
+fill_color = Color(1, 0.34, 0.34, 0.2)
+
+[sub_resource type="Resource" id="Resource_5pbs0"]
+script = ExtResource("3_a3htg")
+id = &"unplaceable"
+style = SubResource("Resource_sjul8")
+
+[sub_resource type="Resource" id="Resource_b6omv"]
+script = ExtResource("6_sjul8")
+border_color = Color(1, 0.95, 0.25, 1)
+fill_color = Color(1, 0.95, 0.25, 0.25)
+
+[sub_resource type="Resource" id="Resource_ueta7"]
+script = ExtResource("3_a3htg")
+id = &"feedback"
+style = SubResource("Resource_b6omv")
+
+[sub_resource type="Resource" id="Resource_ecibo"]
+script = ExtResource("7_5pbs0")
+appearances = Array[ExtResource("3_a3htg")]([SubResource("Resource_a3htg"), SubResource("Resource_6lspb"), SubResource("Resource_5pbs0"), SubResource("Resource_ueta7")])
+
+[sub_resource type="Resource" id="Resource_pd0kc"]
+script = ExtResource("8_b6omv")
+default_cell_appearance_part = SubResource("Resource_ecibo")
+
+[sub_resource type="Resource" id="Resource_sb86v"]
+script = ExtResource("14_rvbjx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbb16"]
+shader = ExtResource("15_sjul8")
+shader_parameter/color_a = Color(0.7252, 0.77616006, 0.98, 1)
+shader_parameter/color_b = Color(0.57983994, 0.5376, 0.96, 1)
+shader_parameter/cell_size = 512.0
+shader_parameter/pattern_scale = 1.0
+shader_parameter/rotation_degrees = 18.0
+shader_parameter/uv_offset = Vector2(0.295, 0)
+shader_parameter/scroll_speed = Vector2(0.295, 0.105)
+shader_parameter/animate = true
+shader_parameter/speed = 0.5
+shader_parameter/phase = 0.0
+shader_parameter/deformation = 1.0
+shader_parameter/antialias = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5swex"]
+texture = ExtResource("16_5pbs0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ueta7"]
+texture = ExtResource("15_a3htg")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sb86v"]
+texture = ExtResource("16_dpg00")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="Resource" id="Resource_rejqv"]
+script = ExtResource("16_ueta7")
+create_background = true
+background_style = SubResource("StyleBoxTexture_5swex")
+background_material = SubResource("ShaderMaterial_dbb16")
+cell_style = SubResource("StyleBoxTexture_ueta7")
+cell_spacing = Vector2i(0, 0)
+empty_cell_style = SubResource("StyleBoxTexture_sb86v")
+
+[resource]
+script = ExtResource("host")
+layout = SubResource("Resource_rejqv")
+features = Array[ExtResource("feature")]([ExtResource("operation_policy"), SubResource("Resource_pd0kc"), ExtResource("pick"), ExtResource("place_feature"), ExtResource("rotate"), ExtResource("transfer"), ExtResource("describe"), ExtResource("nested"), ExtResource("animation_feature"), SubResource("Resource_sb86v")])

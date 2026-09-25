@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="OccupyMap" format=3 uid="uid://c08t84qjaasc5"]
+
+[ext_resource type="Script" uid="uid://grfcmh8gx8ec" path="res://addons/visual_res_editor_panel/gdbase/cell_geometry/occupancy/occupy_map.gd" id="1_gp2ti"]
+
+[resource]
+script = ExtResource("1_gp2ti")
+cells = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(3, 0), Vector2i(3, 1), Vector2i(3, 2), Vector2i(4, 0), Vector2i(4, 1), Vector2i(4, 2), Vector2i(4, 3), Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4)])
+region_cells = Dictionary[Vector2i, Variant]({
+Vector2i(0, 0): true,
+Vector2i(0, 1): true,
+Vector2i(0, 2): true,
+Vector2i(0, 3): true,
+Vector2i(0, 4): true,
+Vector2i(1, 0): true,
+Vector2i(1, 1): true,
+Vector2i(1, 2): true,
+Vector2i(1, 3): true,
+Vector2i(1, 4): true,
+Vector2i(2, 0): true,
+Vector2i(2, 1): true,
+Vector2i(2, 2): true,
+Vector2i(2, 3): true,
+Vector2i(2, 4): true,
+Vector2i(3, 0): true,
+Vector2i(3, 1): true,
+Vector2i(3, 2): true,
+Vector2i(3, 3): true,
+Vector2i(3, 4): true,
+Vector2i(4, 0): true,
+Vector2i(4, 1): true,
+Vector2i(4, 2): true,
+Vector2i(4, 3): true,
+Vector2i(4, 4): true
+})
+metadata/_custom_type_script = "uid://grfcmh8gx8ec"

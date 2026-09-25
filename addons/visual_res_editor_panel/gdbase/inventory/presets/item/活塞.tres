@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dmmcb602qxwro"]
+
+[ext_resource type="Texture2D" uid="uid://ds4cjcixdqp87" path="res://addons/visual_res_editor_panel/assets/dome_item/活塞.png" id="1_g7esx"]
+[ext_resource type="Script" uid="uid://b2ej3ilygm5rk" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_part_base.gd" id="1_m4s5o"]
+[ext_resource type="Script" uid="uid://x0db3hih18ax" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_data.gd" id="2_g7esx"]
+[ext_resource type="Script" uid="uid://c6utnxv0gqgc0" path="res://addons/visual_res_editor_panel/gdbase/cell_geometry/shape/shape.gd" id="3_atb2o"]
+[ext_resource type="Script" uid="uid://d1u7vf12c6jt7" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/reaction/item_reaction_part.gd" id="4_reaction_part"]
+[ext_resource type="Script" uid="uid://buax1g64t2hd4" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/reaction/item_reaction_rule.gd" id="5_reaction_rule"]
+[ext_resource type="Script" uid="uid://c7r5qaw3h2v8d" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/reaction/actions/item_reaction_push_action.gd" id="6_push_action"]
+[ext_resource type="Script" uid="uid://d0gm2rc3f5wbt" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/shape/item_shape_part.gd" id="item_shape_part_1"]
+
+[sub_resource type="Resource" id="Resource_ouiah"]
+script = ExtResource("6_push_action")
+metadata/_custom_type_script = "uid://c7r5p9w3h2v8d"
+
+[sub_resource type="Resource" id="Resource_reaction_rule"]
+script = ExtResource("5_reaction_rule")
+trigger_type = 2
+action = SubResource("Resource_ouiah")
+metadata/_custom_type_script = "uid://buax1g64t2hd4"
+
+[sub_resource type="Resource" id="Resource_reaction_part"]
+script = ExtResource("4_reaction_part")
+reaction_rules = Array[ExtResource("5_reaction_rule")]([SubResource("Resource_reaction_rule")])
+metadata/_custom_type_script = "uid://d1u7vf12c6jt7"
+
+[sub_resource type="Resource" id="Resource_l572g"]
+script = ExtResource("3_atb2o")
+
+[sub_resource type="Resource" id="Resource_item_shape_part"]
+script = ExtResource("item_shape_part_1")
+shape = SubResource("Resource_l572g")
+metadata/_custom_type_script = "uid://bq8shapeitempart"
+
+[resource]
+script = ExtResource("2_g7esx")
+item_name = "活塞"
+icon = ExtResource("1_g7esx")
+item_description = "能够推动周围物品"
+parts = Array[ExtResource("1_m4s5o")]([SubResource("Resource_reaction_part"), SubResource("Resource_item_shape_part")])
+metadata/_custom_type_script = "uid://x0db3hih18ax"

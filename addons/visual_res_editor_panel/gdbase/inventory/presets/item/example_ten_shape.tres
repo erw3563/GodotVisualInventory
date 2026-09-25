@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cb4ybyfnw1ker"]
+
+[ext_resource type="Script" uid="uid://b2ej3ilygm5rk" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_part_base.gd" id="1_qvicl"]
+[ext_resource type="Script" uid="uid://x0db3hih18ax" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_data.gd" id="2_x1c81"]
+[ext_resource type="Resource" uid="uid://befalew3t7xs3" path="res://addons/visual_res_editor_panel/gdbase/cell_geometry/presets/shape/ten_shape_I.tres" id="4_owyh2"]
+[ext_resource type="Script" uid="uid://d0gm2rc3f5wbt" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/shape/item_shape_part.gd" id="item_shape_part_1"]
+
+[sub_resource type="Resource" id="Resource_item_shape_part"]
+script = ExtResource("item_shape_part_1")
+shape = ExtResource("4_owyh2")
+metadata/_custom_type_script = "uid://bq8shapeitempart"
+
+[resource]
+script = ExtResource("2_x1c81")
+item_name = "十字东西"
+parts = Array[ExtResource("1_qvicl")]([SubResource("Resource_item_shape_part")])
+metadata/_custom_type_script = "uid://x0db3hih18ax"

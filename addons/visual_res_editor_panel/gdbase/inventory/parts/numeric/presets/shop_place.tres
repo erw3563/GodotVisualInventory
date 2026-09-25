@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ShopPlaceFeatureDefinition" format=3]
+
+[ext_resource type="Script" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/numeric/host/shop_place_feature_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+input_priority = 100

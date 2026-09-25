@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dnhpajhgcb6id"]
+
+[ext_resource type="Resource" uid="uid://dkcs2gnl8x7i0" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/animation/presets/loop_animation_part.tres" id="animation"]
+[ext_resource type="Script" uid="uid://x0db3hih18ax" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_data.gd" id="data"]
+[ext_resource type="Script" uid="uid://b2ej3ilygm5rk" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_part_base.gd" id="part"]
+
+[sub_resource type="Gradient" id="color"]
+colors = PackedColorArray(0.1, 0.45, 0.8, 1, 0.1, 0.45, 0.8, 1)
+
+[sub_resource type="GradientTexture2D" id="icon"]
+gradient = SubResource("color")
+width = 24
+height = 24
+
+[resource]
+script = ExtResource("data")
+item_name = "循环色块"
+icon = SubResource("icon")
+item_description = "持续变换蓝色。点击页面按钮播放一次金色闪烁；拿起后仍会循环。"
+parts = Array[ExtResource("part")]([ExtResource("animation")])

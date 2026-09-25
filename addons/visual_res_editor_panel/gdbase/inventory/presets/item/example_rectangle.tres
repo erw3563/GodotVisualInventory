@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cd8uesclboem"]
+
+[ext_resource type="Script" uid="uid://x0db3hih18ax" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_data.gd" id="1_item"]
+[ext_resource type="Texture2D" uid="uid://bohfl4iqgjurc" path="res://addons/visual_res_editor_panel/assets/white_block_assets/pull_hook.png" id="1_ygw5w"]
+[ext_resource type="Script" uid="uid://b2ej3ilygm5rk" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_part_base.gd" id="2_part"]
+[ext_resource type="Script" uid="uid://d0gm2rc3f5wbt" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/shape/item_shape_part.gd" id="3_shape_part"]
+[ext_resource type="Resource" uid="uid://c86fu8yamq2jf" path="res://addons/visual_res_editor_panel/gdbase/cell_geometry/presets/shape/rectangle_2_1.tres" id="4_shape"]
+
+[sub_resource type="Resource" id="ShapePart"]
+script = ExtResource("3_shape_part")
+shape = ExtResource("4_shape")
+
+[resource]
+script = ExtResource("1_item")
+item_name = "双格东西"
+icon = ExtResource("1_ygw5w")
+parts = Array[ExtResource("2_part")]([SubResource("ShapePart")])

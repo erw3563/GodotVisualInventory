@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Shape" format=3 uid="uid://bg8lrd4oeyio2"]
+
+[ext_resource type="Script" uid="uid://c6utnxv0gqgc0" path="res://addons/visual_res_editor_panel/gdbase/cell_geometry/shape/shape.gd" id="1_021n4"]
+
+[resource]
+script = ExtResource("1_021n4")
+cells = Array[Vector2i]([Vector2i(0, 0)])
+metadata/_custom_type_script = "uid://c6utnxv0gqgc0"

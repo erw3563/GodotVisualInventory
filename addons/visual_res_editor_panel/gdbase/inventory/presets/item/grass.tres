@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ckwkdxuixpgmv"]
+
+[ext_resource type="Texture2D" uid="uid://jbi8tpi1n02l" path="res://addons/visual_res_editor_panel/assets/white_block_assets/grass.png" id="1_hsdpn"]
+[ext_resource type="Script" uid="uid://b2ej3ilygm5rk" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_part_base.gd" id="2_uxee0"]
+[ext_resource type="Script" uid="uid://buax1g64t2hd4" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/reaction/item_reaction_rule.gd" id="3_ood8m"]
+[ext_resource type="Script" uid="uid://cdqf2my8cfxyu" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/reaction/output/item_reaction_self_output.gd" id="4_hsdpn"]
+[ext_resource type="Script" uid="uid://d3sv6jg12mrsc" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/reaction/placement/item_reaction_adjacent_random_placement.gd" id="5_uxee0"]
+[ext_resource type="Script" uid="uid://6nu1uedqunpk" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/reaction/actions/item_reaction_add_action.gd" id="6_3ylup"]
+[ext_resource type="Script" uid="uid://d1u7vf12c6jt7" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/reaction/item_reaction_part.gd" id="7_nwsjn"]
+[ext_resource type="Script" uid="uid://d0gm2rc3f5wbt" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/shape/item_shape_part.gd" id="8_7dw6j"]
+[ext_resource type="Script" uid="uid://c6utnxv0gqgc0" path="res://addons/visual_res_editor_panel/gdbase/cell_geometry/shape/shape.gd" id="9_hunpd"]
+[ext_resource type="Script" uid="uid://x0db3hih18ax" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_data.gd" id="10_ijbu3"]
+[ext_resource type="Resource" uid="uid://bc2olrkqsvkrm" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/animation/presets/trigger_shake_part.tres" id="animation_part"]
+
+[sub_resource type="Resource" id="Resource_q6prm"]
+script = ExtResource("4_hsdpn")
+metadata/_custom_type_script = "uid://cdqf2my8cfxyu"
+
+[sub_resource type="Resource" id="Resource_lgoci"]
+script = ExtResource("5_uxee0")
+metadata/_custom_type_script = "uid://d3sv6jg12mrsc"
+
+[sub_resource type="Resource" id="Resource_liw6q"]
+script = ExtResource("6_3ylup")
+output_source = SubResource("Resource_q6prm")
+placement_policy = SubResource("Resource_lgoci")
+metadata/_custom_type_script = "uid://6nu1uedqunpk"
+
+[sub_resource type="Resource" id="Resource_f7ixs"]
+script = ExtResource("3_ood8m")
+trigger_type = 2
+action = SubResource("Resource_liw6q")
+success_animation_key = &"trigger"
+metadata/_custom_type_script = "uid://buax1g64t2hd4"
+
+[sub_resource type="Resource" id="Resource_reaction_part"]
+script = ExtResource("7_nwsjn")
+reaction_rules = Array[ExtResource("3_ood8m")]([SubResource("Resource_f7ixs")])
+
+[sub_resource type="Resource" id="Resource_shape_seed"]
+script = ExtResource("9_hunpd")
+
+[sub_resource type="Resource" id="Resource_item_shape_part"]
+script = ExtResource("8_7dw6j")
+shape = SubResource("Resource_shape_seed")
+
+[resource]
+script = ExtResource("10_ijbu3")
+item_name = "草"
+icon = ExtResource("1_hsdpn")
+item_description = "回合结束时，在相邻四格中的随机一格生成一个草。"
+parts = Array[ExtResource("2_uxee0")]([SubResource("Resource_reaction_part"), SubResource("Resource_item_shape_part"), ExtResource("animation_part")])
