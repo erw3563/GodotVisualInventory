@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="InventoryAppearanceKeyCatalog" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://addons/visual_inventory/gdbase/inventory/parts/cell_appearance/editor/inventory_appearance_key_catalog.gd" id="1"]
+[ext_resource type="Script" path="res://addons/visual_inventory/gdbase/inventory/parts/cell_appearance/editor/inventory_appearance_key_entry.gd" id="2"]
+
+[sub_resource type="Resource" id="Placed"]
+script = ExtResource("2")
+id = &"placed"
+display_name = "已放置"
+description = "物品已放置时的常驻外观。"
+
+[sub_resource type="Resource" id="Placeable"]
+script = ExtResource("2")
+id = &"placeable"
+display_name = "可放置"
+description = "手持物品可以放入目标位置时的预览。"
+
+[sub_resource type="Resource" id="Unplaceable"]
+script = ExtResource("2")
+id = &"unplaceable"
+display_name = "不可放置"
+description = "手持物品无法放入目标位置时的预览。"
+
+[sub_resource type="Resource" id="Feedback"]
+script = ExtResource("2")
+id = &"feedback"
+display_name = "失败反馈"
+description = "操作失败时的短时反馈。"
+
+[resource]
+script = ExtResource("1")
+entries = Array[ExtResource("2")]([SubResource("Placed"), SubResource("Placeable"), SubResource("Unplaceable"), SubResource("Feedback")])

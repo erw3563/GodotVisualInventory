@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="ItemAnimationFeatureDefinition" format=3 uid="uid://bmgxjde1mpfkr"]
-
-[ext_resource type="Script" uid="uid://dd7jas8fh76nt" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/animation/host/item_animation_feature_definition.gd" id="script"]
-
-[resource]
-script = ExtResource("script")

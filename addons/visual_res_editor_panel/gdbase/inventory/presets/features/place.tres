@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="InventoryPlaceFeatureDefinition" format=3]
-
-[ext_resource type="Script" uid="uid://dm07irtku0jbp" path="res://addons/visual_res_editor_panel/gdbase/inventory/ui/inventory_host/features/inventory_place_feature_definition.gd" id="1"]
-
-[resource]
-script = ExtResource("1")

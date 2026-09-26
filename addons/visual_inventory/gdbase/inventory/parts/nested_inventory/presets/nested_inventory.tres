@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="NestedInventoryHostFeatureDefinition" format=3 uid="uid://shvdsc22inxe"]
+
+[ext_resource type="Script" uid="uid://cgriywebscbwv" path="res://addons/visual_inventory/gdbase/inventory/parts/nested_inventory/host/nested_inventory_host_feature_definition.gd" id="1"]
+[ext_resource type="Script" uid="uid://c3fxcb7ywd2s" path="res://addons/visual_inventory/gdbase/inventory/ui/inventory_host/features/inventory_take_feature_definition.gd" id="inherit_0"]
+[ext_resource type="Script" uid="uid://d14bo572uj3nq" path="res://addons/visual_inventory/gdbase/inventory/ui/inventory_host/features/inventory_rotate_feature_definition.gd" id="inherit_1"]
+[ext_resource type="Script" uid="uid://wjtfvhkluhkl" path="res://addons/visual_inventory/gdbase/inventory/ui/inventory_host/features/inventory_quick_transfer_feature_definition.gd" id="inherit_2"]
+[ext_resource type="Script" uid="uid://bu2xu0ci8v7u" path="res://addons/visual_inventory/gdbase/inventory/ui/inventory_host/features/inventory_description_feature_definition.gd" id="inherit_3"]
+[ext_resource type="Script" uid="uid://dd7jas8fh76nt" path="res://addons/visual_inventory/gdbase/inventory/parts/animation/host/item_animation_feature_definition.gd" id="inherit_4"]
+
+[ext_resource type="Script" path="res://addons/visual_inventory/gdbase/inventory/parts/cell_appearance/host/inventory_cell_appearance_feature_definition.gd" id="inherit_appearance"]
+
+[ext_resource type="Script" uid="uid://dm07irtku0jbp" path="res://addons/visual_inventory/gdbase/inventory/ui/inventory_host/features/inventory_place_feature_definition.gd" id="inherit_place"]
+
+[ext_resource type="Script" path="res://addons/visual_inventory/gdbase/inventory/parts/tag/host/inventory_operation_rules_feature_definition.gd" id="inherit_policy"]
+
+[resource]
+script = ExtResource("1")
+inherited_feature_types = Array[Script]([ExtResource("inherit_policy"), ExtResource("inherit_appearance"), ExtResource("inherit_0"), ExtResource("inherit_place"), ExtResource("inherit_1"), ExtResource("inherit_2"), ExtResource("inherit_3"), ExtResource("inherit_4"), ExtResource("1")])

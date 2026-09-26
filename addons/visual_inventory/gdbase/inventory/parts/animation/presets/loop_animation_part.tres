@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="ItemAnimationPart" format=3 uid="uid://dkcs2gnl8x7i0"]
+
+[ext_resource type="Script" uid="uid://cst37qm8egxlx" path="res://addons/visual_inventory/gdbase/inventory/parts/animation/item_animation_definition.gd" id="animation"]
+[ext_resource type="Script" uid="uid://beqwws7v0ay1v" path="res://addons/visual_inventory/gdbase/inventory/parts/animation/item_appearance_definition.gd" id="appearance"]
+[ext_resource type="Script" uid="uid://c41u630u6c0x4" path="res://addons/visual_inventory/gdbase/inventory/parts/animation/item_frame_animation.gd" id="frames"]
+[ext_resource type="Script" uid="uid://dqxmk8382n1uk" path="res://addons/visual_inventory/gdbase/inventory/parts/animation/item_animation_part.gd" id="part"]
+
+[sub_resource type="Gradient" id="gradient3"]
+colors = PackedColorArray(1, 0.8, 0.3, 1, 1, 0.8, 0.3, 1)
+
+[sub_resource type="GradientTexture2D" id="texture3"]
+gradient = SubResource("gradient3")
+width = 24
+height = 24
+
+[sub_resource type="Gradient" id="gradient2"]
+colors = PackedColorArray(0.45, 0.95, 1, 1, 0.45, 0.95, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="texture2"]
+gradient = SubResource("gradient2")
+width = 24
+height = 24
+
+[sub_resource type="Resource" id="pulse_frames"]
+script = ExtResource("frames")
+frames = Array[Texture2D]([SubResource("texture3"), SubResource("texture2"), SubResource("texture3")])
+frame_duration = 0.15
+
+[sub_resource type="Resource" id="pulse"]
+script = ExtResource("animation")
+key = &"pulse"
+content = SubResource("pulse_frames")
+
+[sub_resource type="Gradient" id="gradient0"]
+colors = PackedColorArray(0.1, 0.45, 0.8, 1, 0.1, 0.45, 0.8, 1)
+
+[sub_resource type="GradientTexture2D" id="texture0"]
+gradient = SubResource("gradient0")
+width = 24
+height = 24
+
+[sub_resource type="Gradient" id="gradient1"]
+colors = PackedColorArray(0.15, 0.75, 0.95, 1, 0.15, 0.75, 0.95, 1)
+
+[sub_resource type="GradientTexture2D" id="texture1"]
+gradient = SubResource("gradient1")
+width = 24
+height = 24
+
+[sub_resource type="Resource" id="loop"]
+script = ExtResource("frames")
+frames = Array[Texture2D]([SubResource("texture0"), SubResource("texture1"), SubResource("texture2"), SubResource("texture1")])
+frame_duration = 0.2
+
+[sub_resource type="Resource" id="idle"]
+script = ExtResource("appearance")
+key = &"idle"
+loop_animation = SubResource("loop")
+
+[resource]
+script = ExtResource("part")
+default_appearance_key = &"idle"
+appearances = Array[ExtResource("appearance")]([SubResource("idle")])
+animations = Array[ExtResource("animation")]([SubResource("pulse")])

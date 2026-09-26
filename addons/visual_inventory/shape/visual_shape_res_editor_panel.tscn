@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://b1o4sw53yiaeg"]
+
+[ext_resource type="Script" uid="uid://bkvfsx1gyoefq" path="res://addons/visual_inventory/shape/shape_cells_panel.gd" id="1_n5c7v"]
+
+[node name="Panel" type="PanelContainer" unique_id=335955757]
+custom_minimum_size = Vector2(320, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.0
+offset_top = -266.0
+offset_right = 266.0
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n5c7v")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1698713379]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=143913455]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer2" unique_id=1489257264]
+layout_mode = 2
+
+[node name="PopButton" type="Button" parent="MarginContainer/HBoxContainer2/HBoxContainer2" unique_id=1742744990]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+tooltip_text = "在弹窗中打开可视化编辑器"
+text = "弹出"
+
+[node name="XSubButton" type="Button" parent="MarginContainer/HBoxContainer2/HBoxContainer2" unique_id=1884890815]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "x-"
+
+[node name="XAddButton" type="Button" parent="MarginContainer/HBoxContainer2/HBoxContainer2" unique_id=1374964426]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "x+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer2" unique_id=184765091]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer2/HBoxContainer" unique_id=427915469]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="YSubButton" type="Button" parent="MarginContainer/HBoxContainer2/HBoxContainer/VBoxContainer" unique_id=1087307877]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 3
+text = "y-"
+
+[node name="YAddButton" type="Button" parent="MarginContainer/HBoxContainer2/HBoxContainer/VBoxContainer" unique_id=1876597524]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 3
+text = "y+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer2/HBoxContainer" unique_id=1604831620]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer2/HBoxContainer/ScrollContainer" unique_id=1317639747]
+layout_mode = 2
+columns = 5

@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="InventoryQuickTransferFeatureDefinition" format=3 uid="uid://wcf4ycaxl8x6"]
-
-[ext_resource type="Script" uid="uid://wjtfvhkluhkl" path="res://addons/visual_res_editor_panel/gdbase/inventory/ui/inventory_host/features/inventory_quick_transfer_feature_definition.gd" id="1"]
-
-[resource]
-script = ExtResource("1")

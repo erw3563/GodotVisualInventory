@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="InventoryCellAppearanceFeatureDefinition" format=3]
-
-[ext_resource type="Script" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/cell_appearance/host/inventory_cell_appearance_feature_definition.gd" id="feature"]
-[ext_resource type="Resource" path="res://addons/visual_res_editor_panel/gdbase/inventory/parts/cell_appearance/presets/default_cell_appearance_part.tres" id="part"]
-
-
-[resource]
-script = ExtResource("feature")
-default_cell_appearance_part = ExtResource("part")

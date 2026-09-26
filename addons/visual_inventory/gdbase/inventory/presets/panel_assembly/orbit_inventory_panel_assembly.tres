@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="OrbitInventoryPanelAssemblyDefinition" format=3 uid="uid://253w367wxcwn"]
+
+[ext_resource type="Script" uid="uid://bmho064dk8nqe" path="res://addons/visual_inventory/gdbase/inventory/ui/inventory_host/assembly/orbit_inventory_panel_assembly_definition.gd" id="1"]
+[ext_resource type="StyleBox" uid="uid://bqgridcellstyle01" path="res://addons/visual_inventory/gdbase/inventory/presets/styles/inventory_grid_cell_style.tres" id="2_style"]
+
+[resource]
+script = ExtResource("1")
+cell_style = ExtResource("2_style")
+rotary_drag_enabled = true
+snap_back_on_release = true
+snap_back_duration_seconds = 1.0
+entrance_on_child_added = true
+deal_stagger_seconds = 0.2

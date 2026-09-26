@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryDescriptionFeatureDefinition" format=3 uid="uid://nwwisckxiwrp"]
+
+[ext_resource type="Script" uid="uid://bu2xu0ci8v7u" path="res://addons/visual_inventory/gdbase/inventory/ui/inventory_host/features/inventory_description_feature_definition.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://l8s5yiexwbxk" path="res://addons/visual_inventory/gdbase/inventory/ui/description/item_description_popup.tscn" id="panel"]
+
+[resource]
+script = ExtResource("1")
+panel_source = null
+panel_scene = ExtResource("panel")
+existing_panel_path = null
+hover_enabled = null
+hover_delay = null
+active_enabled = null

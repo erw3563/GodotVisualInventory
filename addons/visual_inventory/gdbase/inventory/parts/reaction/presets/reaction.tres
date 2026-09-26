@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="InventoryReactionFeatureDefinition" format=3 uid="uid://k0daxofcyg9xp"]
+
+[ext_resource type="Script" uid="uid://c12s65andr543" path="res://addons/visual_inventory/gdbase/inventory/parts/reaction/host/inventory_reaction_feature_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")

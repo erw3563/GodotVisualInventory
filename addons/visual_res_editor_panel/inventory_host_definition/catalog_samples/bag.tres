@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="ItemData" format=3]
-
-[ext_resource type="Script" path="res://addons/visual_res_editor_panel/gdbase/inventory/core/item/item_data.gd" id="item"]
-[ext_resource type="Texture2D" path="res://addons/visual_res_editor_panel/assets/white_block_assets/example.png" id="icon"]
-
-[resource]
-script = ExtResource("item")
-item_name = "样例物品 B"
-icon = ExtResource("icon")

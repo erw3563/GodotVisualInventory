@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="ItemCellAppearancePart" format=3 uid="uid://dba0hbdno5chw"]
+
+[ext_resource type="Script" uid="uid://d18uu3phsudvq" path="res://addons/visual_inventory/gdbase/inventory/parts/cell_appearance/item_cell_appearance_part.gd" id="1_border_part"]
+[ext_resource type="Script" uid="uid://cjo1kw6n3ebho" path="res://addons/visual_inventory/gdbase/inventory/parts/cell_appearance/inventory_item_line_visual_style.gd" id="2_style"]
+[ext_resource type="Script" uid="uid://bp46qjiwcu25p" path="res://addons/visual_inventory/gdbase/inventory/parts/cell_appearance/inventory_cell_appearance_entry.gd" id="appearance_entry"]
+
+[sub_resource type="Resource" id="Style_placed"]
+script = ExtResource("2_style")
+border_color = Color(0.84, 0.88, 0.97, 1)
+fill_color = Color(0.64, 0.72, 0.9, 0.12)
+
+[sub_resource type="Resource" id="Entry_placed"]
+script = ExtResource("appearance_entry")
+id = &"placed"
+style = SubResource("Style_placed")
+
+[sub_resource type="Resource" id="Style_placeable"]
+script = ExtResource("2_style")
+border_color = Color(0.37, 0.9, 0.53, 1)
+fill_color = Color(0.37, 0.9, 0.53, 0.2)
+
+[sub_resource type="Resource" id="Entry_placeable"]
+script = ExtResource("appearance_entry")
+id = &"placeable"
+style = SubResource("Style_placeable")
+
+[sub_resource type="Resource" id="Style_unplaceable"]
+script = ExtResource("2_style")
+border_color = Color(1, 0.34, 0.34, 1)
+fill_color = Color(1, 0.34, 0.34, 0.2)
+
+[sub_resource type="Resource" id="Entry_unplaceable"]
+script = ExtResource("appearance_entry")
+id = &"unplaceable"
+style = SubResource("Style_unplaceable")
+
+[sub_resource type="Resource" id="Style_feedback"]
+script = ExtResource("2_style")
+border_color = Color(1, 0.95, 0.25, 1)
+fill_color = Color(1, 0.95, 0.25, 0.25)
+
+[sub_resource type="Resource" id="Entry_feedback"]
+script = ExtResource("appearance_entry")
+id = &"feedback"
+style = SubResource("Style_feedback")
+
+[sub_resource type="Resource" id="Style_active"]
+script = ExtResource("2_style")
+border_color = Color(0.25, 0.85, 1, 1)
+fill_color = Color(0.25, 0.85, 1, 0.18)
+
+[sub_resource type="Resource" id="Entry_active"]
+script = ExtResource("appearance_entry")
+id = &"active"
+style = SubResource("Style_active")
+
+[resource]
+script = ExtResource("1_border_part")
+appearances = Array[ExtResource("appearance_entry")]([SubResource("Entry_placed"), SubResource("Entry_placeable"), SubResource("Entry_unplaceable"), SubResource("Entry_feedback"), SubResource("Entry_active")])

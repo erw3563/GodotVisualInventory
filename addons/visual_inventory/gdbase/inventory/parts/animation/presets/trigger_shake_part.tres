@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemAnimationPart" format=3 uid="uid://bc2olrkqsvkrm"]
+
+[ext_resource type="Script" uid="uid://beqwws7v0ay1v" path="res://addons/visual_inventory/gdbase/inventory/parts/animation/item_appearance_definition.gd" id="3_52tqu"]
+[ext_resource type="Script" uid="uid://cst37qm8egxlx" path="res://addons/visual_inventory/gdbase/inventory/parts/animation/item_animation_definition.gd" id="animation"]
+[ext_resource type="Script" uid="uid://dqxmk8382n1uk" path="res://addons/visual_inventory/gdbase/inventory/parts/animation/item_animation_part.gd" id="part"]
+[ext_resource type="Script" uid="uid://cxmls61xasvfb" path="res://addons/visual_inventory/gdbase/inventory/parts/animation/item_shake_animation.gd" id="shake"]
+
+[sub_resource type="Resource" id="shake"]
+script = ExtResource("shake")
+
+[sub_resource type="Resource" id="trigger"]
+script = ExtResource("animation")
+key = &"trigger"
+content = SubResource("shake")
+
+[resource]
+script = ExtResource("part")
+animations = Array[ExtResource("animation")]([SubResource("trigger")])

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="InventoryHostDefinition" format=3 uid="uid://ngpq5odediwr"]
+
+[ext_resource type="Script" uid="uid://oycyw50xfour" path="res://addons/visual_inventory/gdbase/inventory/ui/inventory_host/assembly/catalog_inventory_panel_assembly_definition.gd" id="10_h0xfg"]
+[ext_resource type="Texture2D" uid="uid://b0siijahmpk0a" path="res://addons/visual_inventory/assets/UIBorder/Panel/panel-001.png" id="10_hxksl"]
+[ext_resource type="Texture2D" uid="uid://8tuy44jicd2d" path="res://addons/visual_inventory/assets/UIBorder/Panel/panel-000.png" id="10_ojev5"]
+[ext_resource type="Resource" uid="uid://bmgxjde1mpfkr" path="res://addons/visual_inventory/gdbase/inventory/parts/animation/presets/animation.tres" id="animation_feature"]
+[ext_resource type="Resource" uid="uid://nwwisckxiwrp" path="res://addons/visual_inventory/gdbase/inventory/presets/features/description.tres" id="describe"]
+[ext_resource type="Script" uid="uid://c5g3ltygatqh8" path="res://addons/visual_inventory/gdbase/inventory/ui/inventory_host/assembly/inventory_host_feature_definition.gd" id="feature"]
+[ext_resource type="Script" uid="uid://brwqradtk4qso" path="res://addons/visual_inventory/gdbase/inventory/ui/inventory_host/assembly/inventory_host_definition.gd" id="host"]
+[ext_resource type="Resource" uid="uid://shvdsc22inxe" path="res://addons/visual_inventory/gdbase/inventory/parts/nested_inventory/presets/nested_inventory.tres" id="nested"]
+[ext_resource type="Resource" path="res://addons/visual_inventory/gdbase/inventory/parts/tag/presets/operation_rules.tres" id="operation_policy"]
+[ext_resource type="Resource" uid="uid://drlnqxdankvs3" path="res://addons/visual_inventory/gdbase/inventory/presets/features/take.tres" id="pick"]
+[ext_resource type="Resource" path="res://addons/visual_inventory/gdbase/inventory/presets/features/place.tres" id="place_feature"]
+[ext_resource type="Resource" uid="uid://b4fmnnafe213s" path="res://addons/visual_inventory/gdbase/inventory/presets/features/rotate.tres" id="rotate"]
+[ext_resource type="Resource" uid="uid://wcf4ycaxl8x6" path="res://addons/visual_inventory/gdbase/inventory/presets/features/quick_transfer.tres" id="transfer"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qj71t"]
+texture = ExtResource("10_hxksl")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(0, 0, 48, 48)
+modulate_color = Color(1, 0.992, 0.76, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m3mnv"]
+texture = ExtResource("10_ojev5")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.80852, 0.82, 0.7216, 1)
+
+[sub_resource type="Resource" id="Resource_cpnhj"]
+script = ExtResource("10_h0xfg")
+create_background = true
+background_style = SubResource("StyleBoxTexture_qj71t")
+row_style = SubResource("StyleBoxTexture_m3mnv")
+row_height = 64
+min_panel_size = Vector2(256, 96)
+
+[resource]
+script = ExtResource("host")
+layout = SubResource("Resource_cpnhj")
+features = Array[ExtResource("feature")]([ExtResource("operation_policy"), ExtResource("pick"), ExtResource("place_feature"), ExtResource("rotate"), ExtResource("transfer"), ExtResource("describe"), ExtResource("nested"), ExtResource("animation_feature")])

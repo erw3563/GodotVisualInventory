@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="InventoryRotateFeatureDefinition" format=3 uid="uid://b4fmnnafe213s"]
+
+[ext_resource type="Script" uid="uid://d14bo572uj3nq" path="res://addons/visual_inventory/gdbase/inventory/ui/inventory_host/features/inventory_rotate_feature_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")

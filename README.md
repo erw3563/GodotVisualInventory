@@ -3,7 +3,7 @@ README由AI生成
 
 面向 Godot 4.8 的可视化库存插件。它同时提供可在编辑器中配置的物品、库存与界面资源，以及运行时的物品放置、拾取、旋转、堆叠和转移能力。
 
-当前插件版本：**0.5**（见 `addons/visual_res_editor_panel/plugin.cfg`）。仓库自带演示项目；实际集成时只需复制 `addons/visual_res_editor_panel` 整个目录。
+当前插件版本：**0.5**（见 `addons/visual_inventory/plugin.cfg`）。仓库自带演示项目；实际集成时只需复制 `addons/visual_inventory` 整个目录。
 
 ## 功能概览
 
@@ -17,8 +17,8 @@ README由AI生成
 ## 安装
 
 1. 使用 **Godot 4.8** 打开你的项目。本仓库的 `project.godot` 声明了 4.8；其他 Godot 版本尚未在本仓库中证明兼容。
-2. 将仓库的 `addons/visual_res_editor_panel/` **完整复制**到目标项目的 `res://addons/visual_res_editor_panel/`。保留目录结构和其中的资源、场景、图片与脚本。
-3. 在 **项目 > 项目设置 > 插件** 中启用 `VisualResEditorPanel`。启用时会自动调用 `InventoryInputMapSetup.ensure_bindings()`，把下表动作写入 **项目设置 > 输入映射**（已有绑定不会被覆盖）。也可在 **工具 > 注册库存输入映射** 手动再跑一次；运行时脚本可调用同一 API。
+2. 将仓库的 `addons/visual_inventory/` **完整复制**到目标项目的 `res://addons/visual_inventory/`。保留目录结构和其中的资源、场景、图片与脚本。
+3. 在 **项目 > 项目设置 > 插件** 中启用 `VisualInventory`。启用时会自动调用 `InventoryInputMapSetup.ensure_bindings()`，把下表动作写入 **项目设置 > 输入映射**（已有绑定不会被覆盖）。也可在 **工具 > 注册库存输入映射** 手动再跑一次；运行时脚本可调用同一 API。
 
 | 输入动作 | 默认输入 |
 | --- | --- |
@@ -34,13 +34,13 @@ README由AI生成
 
 ## 先运行演示
 
-克隆本仓库后用 Godot 4.8 打开根目录，运行项目即可进入 `addons/visual_res_editor_panel/visual_inventory_dome.tscn`。演示场景把同一份 `visual_inventory_dome_inventory.tres` 显示在网格、目录和环绕布局的 Host 中，适合先观察不同布局及输入行为。
+克隆本仓库后用 Godot 4.8 打开根目录，运行项目即可进入 `addons/visual_inventory/visual_inventory_dome.tscn`。演示场景把同一份 `visual_inventory_dome_inventory.tres` 显示在网格、目录和环绕布局的 Host 中，适合先观察不同布局及输入行为。
 
 要尝试编辑器：
 
-1. 在文件系统中选中 `addons/visual_res_editor_panel/visual_inventory_dome_inventory.tres`，在 Inspector 顶部使用可视化库存编辑器，修改后保存资源。
-2. 选中 `addons/visual_res_editor_panel/gdbase/inventory/presets/item/` 下的一个物品资源，点击 Inspector 中的 **打开物品创建器**。也可以从编辑器的 **工具 > 新建物品** 开始。
-3. 选中 `addons/visual_res_editor_panel/gdbase/inventory/presets/host/grid_inventory_host.tres`，点击 **打开可视化编辑器**，查看布局与功能配置；修改后点击 **应用**。
+1. 在文件系统中选中 `addons/visual_inventory/visual_inventory_dome_inventory.tres`，在 Inspector 顶部使用可视化库存编辑器，修改后保存资源。
+2. 选中 `addons/visual_inventory/gdbase/inventory/presets/item/` 下的一个物品资源，点击 Inspector 中的 **打开物品创建器**。也可以从编辑器的 **工具 > 新建物品** 开始。
+3. 选中 `addons/visual_inventory/gdbase/inventory/presets/host/grid_inventory_host.tres`，点击 **打开可视化编辑器**，查看布局与功能配置；修改后点击 **应用**。
 
 演示资源也是可编辑数据。希望保留原始示例时，先复制对应 `.tres` 再修改。
 
@@ -65,7 +65,7 @@ README由AI生成
 ## 目录说明
 
 ```text
-addons/visual_res_editor_panel/
+addons/visual_inventory/
 ├── plugin.cfg                 # 编辑器插件入口
 ├── visual_inventory_dome.tscn # 演示场景
 ├── visual_inventory_dome_inventory.tres
@@ -86,4 +86,4 @@ addons/visual_res_editor_panel/
 
 ## 许可证
 
-本项目以 [MIT License](LICENSE) 发布。单独分发 `addons/visual_res_editor_panel/` 时，该目录也附有一份 [许可证](addons/visual_res_editor_panel/LICENSE)。
+本项目以 [MIT License](LICENSE) 发布。单独分发 `addons/visual_inventory/` 时，该目录也附有一份 [许可证](addons/visual_inventory/LICENSE)。

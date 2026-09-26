@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Visual Inventory"
-run/main_scene="res://addons/visual_res_editor_panel/visual_inventory_dome.tscn"
+run/main_scene="res://addons/visual_inventory/visual_inventory_dome.tscn"
 config/features=PackedStringArray("4.8", "Forward Plus")
 
 [debug]
@@ -21,7 +21,7 @@ gdscript/warnings/integer_division=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/visual_res_editor_panel/plugin.cfg")
+enabled=PackedStringArray("res://addons/visual_inventory/plugin.cfg")
 
 [input]
 
