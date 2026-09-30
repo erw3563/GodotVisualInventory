@@ -82,8 +82,8 @@ addons/visual_inventory/
 ## erw的话
 
 以前专门为库存系统写非常多可视化的编辑面板根本是不可能的事情，它吃力又不讨好。对于我来说，宁愿多敲代码用节点去拼一个背包也不愿意去为这些资源写专门的编辑面板。但AI的出现改变了这一切，为了减轻人类交互的负担，利用AI强大的能力写可视化的资源编辑面板成为了一个可选项。对我而言，它能够减轻许多重复化的配置工作。我能利用它做出非常多样的库存，并且不需要向AI许愿。因为这将许愿的流程转移到了前期。
-那为什么不让AI去配置背包人物还有别的东西？我不清楚这个问题的回答，但我觉得这样很Coollllllllllllllllllllllllllllllllllllllllllllllllllllll！！！！！！！！！！！！
+那为什么不让AI去配置背包人物还有别的东西？我不清楚这个问题的回答，但我觉得这样很Cool
 
 ## 许可证
 
-本项目以 [MIT License](LICENSE) 发布。单独分发 `addons/visual_inventory/` 时，该目录也附有一份 [许可证](addons/visual_inventory/LICENSE)。
+本项目以 [MIT License](LICENSE) 发布。
