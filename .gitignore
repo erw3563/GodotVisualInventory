@@ -3,3 +3,6 @@
 
 # Local export settings; keep export_presets.cfg versioned when added.
 /export.cfg
+
+# Validated addon packages; existing addons.zip is intentionally not overwritten.
+/dist/

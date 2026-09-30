@@ -6,6 +6,10 @@ const ROOTS := [
 	"res://addons/visual_inventory/gdbase/inventory/ui/inventory_host",
 	"res://addons/visual_inventory/gdbase/integration/component_inventory",
 ]
+# 独立插件不包含组件集成；只有明确可选的根目录允许缺失。
+const OPTIONAL_ROOTS := [
+	"res://addons/visual_inventory/gdbase/integration/component_inventory",
+]
 var entries: Array[Dictionary] = []
 var errors: Array[String] = []
 
@@ -14,6 +18,8 @@ func refresh(roots: Array = ROOTS) -> void:
 	errors.clear()
 	var paths: Array[String] = []
 	for root in roots:
+		if root in OPTIONAL_ROOTS and not DirAccess.dir_exists_absolute(root) and not FileAccess.file_exists(root):
+			continue
 		_scan(root, paths)
 	paths.sort()
 	var seen: Dictionary = {}
